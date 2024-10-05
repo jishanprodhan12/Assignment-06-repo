@@ -3,13 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Peddy-06</title>
+    <!-- font awesome cnd  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- google font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <!-- link daisyUI -->
-     
 <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
+<!-- tailwind config  -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+            'primary-color':'#0E7A81'
+          }
+        }
+      }
+    }
+  </script>
+<!-- style css  -->
+<style>
+    .lato{
+        font-family: "Lato", sans-serif;
+     }
+</style>
+
 </head>
-<body>
-        testing 
+<body class="lato">
+        <header>
+            <!-- nav  -->
+             <nav class="w-11/12 mx-auto flex items-center justify-between py-2 ">
+                <div class="flex items-center gap-2 ">
+                    <span class="text-primary-color text-xl"><i class="fa-solid fa-paw"></i></span>
+                    <p class="text-xl font-extrabold">Peddy</p>
+                </div>
+                <div>
+                    <ul class="flex gap-3 items-center text-sm text-gray-500">
+                        <li><a href="#"></a>Home</li>
+                        <li><a href="#"></a>Shop</li>
+                        <li><a href="#"></a>Contact</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 rounded-full shadow-md flex w-8 h-8 items-center justify-center">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+             </nav>
+        </header>
+        <main></main>
+        <footer></footer>
 </body>
 </html>
