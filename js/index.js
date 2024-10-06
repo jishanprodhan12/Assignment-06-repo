@@ -51,10 +51,10 @@ const showAllPet = (pets) => {
     pets.forEach(pet => {
         console.log(pet);
         const petCard = document.createElement('div');
-        const {breed , image , pet_name,gender,date_of_birth,price} = pet;
-
-        petCard.innerHTML= `
-            <div class="card bg-base-100 shadow-xl">
+        const { breed, image, pet_name, gender, date_of_birth, price, petId } = pet;
+        
+        petCard.innerHTML = `
+            <div class="card bg-base-100 shadow-xl ">
                         <figure class="px-10 pt-10">
                           <img
                             src="${image}"
@@ -65,7 +65,7 @@ const showAllPet = (pets) => {
                           <h2 class="card-title">${pet_name}</h2>
                           <p class="flex items-center gap-2">
                             <span class="w-4 h-4"><img src="./images/Frame.png" alt="" class="w-full object-cover"></span>
-                            <span class="text-sm text-gray-500">Breed: ${(breed===undefined ? ' not availble':breed)}</span>
+                            <span class="text-sm text-gray-500">Breed: ${(breed === undefined ? ' not availble' : breed)}</span>
                         </p>
                         <p class="flex items-center gap-2">
                             <span><i class="fa-regular fa-calendar"></i></span>
@@ -83,14 +83,14 @@ const showAllPet = (pets) => {
                          <div class="flex items-center justify-between gap-2 ">
                             <!-- btn  -->
                             <div >
-                                <button id="btn-like" class="btn btn-outline   font-extrabold ">
+                                <button id="btn-like" class="btn btn-outline   font-extrabold btn-sm " onclick="addLikeContainer('${image}')">
                                   <span><i class="fa-regular fa-thumbs-up"></i></span></button>
                             </div>
                             <div>
-                                <button class="btn btn-outline  text-primary-color font-extrabold">Adopt </button>
+                                <button class="btn btn-outline  text-primary-color font-extrabold btn-sm">Adopt </button>
                             </div>
                             <div>
-                                <button class="btn btn-outline  text-primary-color font-extrabold">Details </button>
+                                <button class="btn btn-outline  text-primary-color font-extrabold btn-sm">Details </button>
                             </div>
                           </div>
                         </div>
@@ -98,6 +98,20 @@ const showAllPet = (pets) => {
         `
         petCardContainer.appendChild(petCard);
     })
+}
+const addLikeContainer = (likedImg) => {
+    console.log(likedImg);
+    //target container
+    const likedContainer = document.getElementById('liked-container');
+    // create element 
+    const likeCard = document.createElement('div');
+    likeCard.innerHTML = `
+
+            <div class"rounded-lg">
+                <img src="${likedImg}" alt="" class="w-full object-cover rounded-md">
+            </div> 
+    `
+    likedContainer.appendChild(likeCard);
 }
 showCategories();
 allPets();
