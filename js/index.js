@@ -62,22 +62,22 @@ const showAllPet = (pets) => {
                             class="rounded-xl" />
                         </figure>
                         <div class="card-body ">
-                          <h2 class="card-title">${pet_name}</h2>
+                          <h2 class="card-title">${(pet_name === undefined ? ' not Available' : pet_name)}</h2>
                           <p class="flex items-center gap-2">
                             <span class="w-4 h-4"><img src="./images/Frame.png" alt="" class="w-full object-cover"></span>
-                            <span class="text-sm text-gray-500">Breed: ${(breed === undefined ? ' not availble' : breed)}</span>
+                            <span class="text-sm text-gray-500">Breed: ${(breed === undefined ? ' not Available' : breed)}</span>
                         </p>
                         <p class="flex items-center gap-2">
                             <span><i class="fa-regular fa-calendar"></i></span>
-                            <span  class="text-sm text-gray-500">Birth: ${date_of_birth}</span>
+                            <span  class="text-sm text-gray-500">Birth: ${(date_of_birth === undefined ? ' not Available' : date_of_birth)}</span>
                         </p>
                         <p class="flex items-center gap-2">
                             <span><i class="fa-solid fa-venus"></i></span>
-                            <span class="text-sm text-gray-500">Gender: ${gender}</span>
+                            <span class="text-sm text-gray-500">Gender: ${(gender === undefined ? ' not Available' : gender)}</span>
                         </p>
                           <p class="flex items-center gap-2">
                             <span><i class="fa-solid fa-dollar-sign"></i></span>
-                            <span class="text-sm text-gray-500">Price : ${price}$</span>
+                            <span class="text-sm text-gray-500">Price : ${(price === null ? ' not Available' : price)}$</span>
                         </p>
                         <div class="divider"></div>
                          <div class="flex items-center justify-between gap-1 md:gap-2 ">
