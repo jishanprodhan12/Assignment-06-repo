@@ -80,7 +80,7 @@ const showAllPet = (pets) => {
                             <span class="text-sm text-gray-500">Price : ${price}$</span>
                         </p>
                         <div class="divider"></div>
-                         <div class="flex items-center justify-between gap-2 ">
+                         <div class="flex items-center justify-between gap-1 md:gap-2 ">
                             <!-- btn  -->
                             <div >
                                 <button id="btn-like" class="btn btn-outline   font-extrabold btn-sm " onclick="addLikeContainer('${image}')">
