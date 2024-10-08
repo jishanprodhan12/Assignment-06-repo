@@ -206,33 +206,79 @@ const displayEachPet = (pet) => {
 
 }
 
-/**
- * 
- * @param {{
-  "status": true,
-  "message": "successfully fetched pet data using id 1",
-  "petData": {
-    "petId": 1,
-    "breed": "Golden Retriever",
-    "category": "Dog",
-    "date_of_birth": "2023-01-15",
-    "price": 1200,
-    "image": "https://i.ibb.co.com/p0w744T/pet-1.jpg",
-    "gender": "Male",
-    "pet_details": "This friendly male Golden Retriever is energetic and loyal, making him a perfect companion for families. Born on January 15, 2023, he enjoys playing outdoors and is especially great with children. Fully vaccinated, he's ready to join your family and bring endless joy. Priced at $1200, he offers love, loyalty, and a lively spirit for those seeking a playful yet gentle dog.",
-    "vaccinated_status": "Fully",
-    "pet_name": "Sunny"
-  }
-}} Details 
- */
-const showPetDetails=async (id)=>{
+const showPetDetails = async (id) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`);
     const data = await res.json();
     showPetModal(data.petData);
-     my_modal_5.showModal();
+
+    my_modal_5.showModal();
 }
-const showPetModal=(Details)=>{
-    console.log(Details);
+
+const showPetModal = (Details) => {
+    const {breed ,date_of_birth,price,image,gender,pet_details,vaccinated_status,pet_name} = Details;
+    const DetailsModalContainer = document.getElementById('details-modal-container');
+    const detailsModal = document.createElement('div');
+    detailsModal.innerHTML = `
+    <div >
+                <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+                    <div class="modal-box">
+                        <!-- modal body  -->
+                        <div >  
+                            <div class="w-11/12 mx-auto shadow-sm rounded-lg">
+                                <img src="${image}" alt="" class="w-full object-cover">
+                            </div>
+                            <!-- text  -->
+                             <div class="my-2">
+                    
+                                <h3>${(pet_name === undefined ? ' not Available' : pet_name)}</h3>
+                                <!-- breed gender container -->
+                                <div class="grid grid-cols-2 gap-1 md:gap-3 my-3">
+                                    <p class="flex items-center gap-2">
+                                        <span class="w-4 h-4"><img src="./images/Frame.png" alt="" class="w-full object-cover"></span>
+                                        <span class="text-sm text-gray-500">${(breed === undefined ? ' not Available' : breed)}</span>
+                                    </p>
+                                    <p class="flex items-center gap-2">
+                                        <span><i class="fa-regular fa-calendar"></i></span>
+                                        <span  class="text-sm text-gray-500">Birth: ${(date_of_birth === undefined ? ' not Available' : date_of_birth)}</span>
+                                    </p>
+                                    <p class="flex items-center gap-2">
+                                        <span><i class="fa-solid fa-venus"></i></span>
+                                        <span class="text-sm text-gray-500">Gender: ${(gender === undefined ? ' not Available' : gender)}</span>
+                                    </p>
+                                      <p class="flex items-center gap-2">
+                                        <span><i class="fa-solid fa-dollar-sign"></i></span>
+                                        <span class="text-sm text-gray-500">Price : ${(price === undefined ? ' not Available' : price)}$</span>
+                                    </p> 
+                                    <p class="flex items-center gap-2">
+                                        <span><i class="fa-solid fa-venus"></i></span>
+                                        <span class="text-sm text-gray-500">Vaccinated status: ${(vaccinated_status === undefined ? ' not Available' : vaccinated_status)}</span>
+                                    </p>
+                                </div>
+                             </div>
+                             <!-- decription  -->
+                              <div class="my-2 gap-2">
+                                <h3 class="text-xl font-extrabold">Details Information</h3>
+                                <ul class="list-disc ml-3">
+                                    <li class="text-sm text-gray-500">${pet_details}</li>
+                                </ul>
+                              </div>
+
+                        </div>
+                        <!-- close model btn -->
+                        <div class="w-full border-2">
+                            <form method="dialog">
+                                <!-- if there is a button in form, it will close the modal -->
+                                <button
+                                    class="btn bg-lime-50 w-full text-primary-color text-xl font-bold">Close</button>
+                            </form>
+                        </div>
+                    </div>
+                </dialog>
+            </div>
+    
+    `
+    DetailsModalContainer.appendChild(detailsModal);
+
 }
 showCategories();
 allPets();
