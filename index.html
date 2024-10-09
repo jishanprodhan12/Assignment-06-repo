@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peddy-06</title>
+    <title>Peddy || Home </title>
+    <!-- favicon  -->
+    <link rel="shortcut icon" href="./images/logo.webp" type="image/x-icon">
     <!-- font awesome cnd  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
@@ -35,6 +37,14 @@
     <style>
         .lato {
             font-family: "Lato", sans-serif;
+        }
+        .active{
+            border: 2px solid teal;
+            background-color: hsla(180, 91%, 36%, 0.342);
+            width: fit-content;
+            border-radius: 50% ;
+            padding-left: 0 30px;
+            overflow: hidden;
         }
     </style>
 
@@ -127,15 +137,15 @@
             <div id="details-modal-container">
 
             </div>
-    
-                <!-- model end  -->
+
+            <!-- model end  -->
         </section>
 
     </main>
 
-    <footer class="footer  px-16 py-10 bg-black text-white">
+    <footer class="footer  px-16 py-10 bg-black text-white flex justify-center items-center flex-wrap">
         <!-- footer 1st row  -->
-        <div class="w-11/12 mx-auto flex items-center justify-between py-2 ">
+        <div class="flex-1">
             <div class="flex  gap-2 flex-col ">
                 <div class="flex gap-2 items-center flex-1">
                     <span class="text-primary-color text-xl"><i class="fa-solid fa-paw"></i></span>
@@ -143,38 +153,52 @@
                 </div>
                 <br>
                 <div>
-                    <p>Location: av. Washington 165, NY CA </p>
-                    <span>54003</span>
+                    <p>Location: Gazipur , Dhaka , Bd </p>
+                    <span>Mouchak</span>
                     <p>Phone: 0187388977</p>
-                    <p>Email: info@yourdomain.com</p>
+                    <p>Email: mdjishanprodhan132@gmail.com</p>
                     <p>Openings hours: 9.00 AM - 5.00 PM</p>
                 </div>
-            </div>
-            <!-- footer social  -->
-            <div>
-                <!-- fb -->
-                <div>
-                    <a href=""><img src="" alt=""></a>
-                </div>
-                <!-- x  -->
-                <div>
-                    <a href=""><img src="" alt=""></a>
-                </div>
-                <!-- you  -->
-                <div>
-                    <a href=""><img src="" alt=""></a>
-                </div>
-                <!-- insta  -->
-                <div>
-                    <a href=""><img src="" alt=""></a>
+                <!-- footer social  -->
+                <div class="flex space-x-4 mt-4">
+                    <a href="#"><img src="https://img.icons8.com/?size=48&id=118497&format=png" alt="Facebook"
+                            class="w-6 h-6"></a>
+                    <a href="#"><img src="https://img.icons8.com/?size=48&id=ZNMifeqJbPRv&format=png" alt="x"
+                            class="w-6 h-6"></a>
+                    <a href="#"><img src="https://img.icons8.com/?size=48&id=19318&format=png" alt="YouTube"
+                            class="w-6 h-6"></a>
+                    <a href="#"><img src="https://img.icons8.com/color/48/instagram-new.png" alt="Instagram"
+                            class="w-6 h-6"></a>
                 </div>
 
+            </div>
+        </div>
+
+        <div class="flex-1">
+            <div class="flex  gap-2 flex-col">
+                <h2 class="text-lg font-bold ">Useful Links</h2>
+                <ul class="space-y-2">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Animals</a></li>
+                    <li><a href="#">Foundation</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex-1">
+            <div class="flex  gap-2 flex-col">
+                <h2 class="text-lg font-bold mb-4">Drop a Message</h2>
+                <form class="flex flex-col space-y-4">
+                    <input type="email" placeholder="Enter your email"
+                        class="input input-bordered w-full bg-black text-gray-300 focus:bg-white focus:text-black"
+                        required>
+                    <button type="submit" class="btn text-lg bg-primary-color text-white ">Subscribe</button>
+                </form>
             </div>
 
         </div>
-
-        <div></div>
-        <div></div>
     </footer>
     <script src="./js/index.js"></script>
 </body>
