@@ -216,8 +216,6 @@ const showPetDetails = async (id) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`);
     const data = await res.json();
     showPetModal(data.petData);
-    my_modal_5.showModal();
-    
    }catch(error){
     console.log(error);
    }
@@ -228,9 +226,8 @@ const showPetDetails = async (id) => {
 const showPetModal = (Details) => {
     const {breed ,date_of_birth,price,image,gender,pet_details,vaccinated_status,pet_name} = Details;
     const DetailsModalContainer = document.getElementById('details-modal-container');
-    const detailsModal = document.createElement('div');
-    detailsModal.innerHTML = `
-    <div >
+    DetailsModalContainer.innerHTML = `
+    
                 <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
                     <div class="modal-box">
                         <!-- modal body  -->
@@ -285,10 +282,10 @@ const showPetModal = (Details) => {
                         
                     </div>
                 </dialog>
-            </div>
     
     `
-    DetailsModalContainer.appendChild(detailsModal);
+    
+    my_modal_5.showModal();
 }
 
 const closeModal = (button) => {
