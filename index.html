@@ -111,7 +111,7 @@
             <!-- title best deal -->
             <div class="flex items-center justify-between my-7">
                 <h3 class="text-xl font-bold">Best Deal For you</h3>
-                <button class="btn btn-success text-white font-bold">Sort by Price</button>
+                <button class="btn btn-success text-white font-bold" id="sort-btn" onclick="sort()">Sort by Price</button>
             </div>
             <!-- spiner  -->
             <div class="load w-fit  mx-auto">
@@ -124,6 +124,10 @@
                     class="col-span-3 md:col-span-6 lg:col-span-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-content-center">
 
                 </div>
+                <div id="sort-card-container"
+                class="col-span-3 md:col-span-6 lg:col-span-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-content-center">
+
+            </div>
                 <!-- liked card cotainer  -->
                 <div id="liked-container"
                     class="col-span-2 lg:col-span-3 p-5 card card-body bg-white shadow-lg rounded-lg border-2 grid grid-cols-1 md:grid-cols-2 h-fit justify-center gap-5 ">
@@ -132,6 +136,14 @@
 
             </div>
         </section>
+        <!--! sort  start  -->
+        <div id="sort-pet-card" class="grid grid-cols-5 md:grid-cols-8 lg:grid-cols-12 gap-4 my-6 justify-between ">
+
+           
+           
+
+        </div>
+         <!--! sort end  -->
         <!-- modal  -->
         <section>
             <!-- Open the details modal using ID.showModal() method -->

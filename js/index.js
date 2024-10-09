@@ -1,17 +1,17 @@
-const showCategories =() => {
-     fetch('https://openapi.programming-hero.com/api/peddy/categories')
-    .then((res)=> res.json())
-    .then((data)=> {
-        displayCategories(data.categories);
-    })
-    .catch((error)=>console.log(error));
+const showCategories = () => {
+    fetch('https://openapi.programming-hero.com/api/peddy/categories')
+        .then((res) => res.json())
+        .then((data) => {
+            displayCategories(data.categories);
+        })
+        .catch((error) => console.log(error));
 }
 
 // remove active
 const removeActiveClass = () => {
     const RemoveBtn = document.getElementsByClassName('catagorie-active');
     for (const btn of RemoveBtn) {
-        btn.classList.remove('active' , 'rounded-lg','bg-transparent');
+        btn.classList.remove('active', 'rounded-lg', 'bg-transparent');
     }
 
 }
@@ -33,7 +33,7 @@ const displayCategories = (data) => {
         `
         categoriesContainer.appendChild(categorieBtn);
     });
-    
+
 }
 
 // all pets show 
@@ -115,7 +115,7 @@ const addLikeContainer = (likedImg) => {
 
 const showEachCategorie = async (eachPet) => {
     removeActiveClass();
-    
+
     const addActive = document.getElementById(`categorie-btn${eachPet}`);
     addActive.classList.add('active');
     const spinerShow = document.getElementById('spiner');
@@ -140,7 +140,7 @@ const displayEachPet = (pet) => {
         pet.forEach(pet => {
             const petCard = document.createElement('div');
 
-            const { breed, image, pet_name, gender, date_of_birth, price, petId} = pet;
+            const { breed, image, pet_name, gender, date_of_birth, price, petId } = pet;
 
             petCard.innerHTML = `
                 <div class="card bg-base-100 shadow-xl ">
@@ -212,19 +212,19 @@ const displayEachPet = (pet) => {
 }
 
 const showPetDetails = async (id) => {
-   try{
-    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`);
-    const data = await res.json();
-    showPetModal(data.petData);
-   }catch(error){
-    console.log(error);
-   }
-   
- 
+    try {
+        const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`);
+        const data = await res.json();
+        showPetModal(data.petData);
+    } catch (error) {
+        console.log(error);
+    }
+
+
 }
 
 const showPetModal = (Details) => {
-    const {breed ,date_of_birth,price,image,gender,pet_details,vaccinated_status,pet_name} = Details;
+    const { breed, date_of_birth, price, image, gender, pet_details, vaccinated_status, pet_name } = Details;
     const DetailsModalContainer = document.getElementById('details-modal-container');
     DetailsModalContainer.innerHTML = `
     
@@ -284,7 +284,6 @@ const showPetModal = (Details) => {
                 </dialog>
     
     `
-    
     my_modal_5.showModal();
 }
 
@@ -323,6 +322,132 @@ const showAdoptModal = (button) => {
         clearInterval(interval);
         closeModal(button);
     };
+};
+//  const sortPrice=()=>{
+//     console.log("sort btn clicked");
+//     try{
+//         fetch('https://openapi.programming-hero.com/api/peddy/pets')
+//         .then((res)=> res.json())
+//         .then((data)=> sort(data.pets));
+//     }catch(e){
+//         console.log(error);
+//     }
+//  }
+//  const sort=(datas)=>{
+//     console.log(datas);
+//         const sortedPets = datas.pets.sort((a, b) => {
+
+//             const priceA = a.price || 0;
+//             const priceB = b.price || 0;
+//             console.log(sortedPets);
+//             return priceB - priceA;
+//         });
+        
+// }
+
+const sortPets=(sortd)=>{
+    sortd.forEach(d=>{
+        showSortPet(d);
+    })
+
+}
+const showSortPet=(sort)=>{
+    document.getElementById('pet-card-cotainer').classList.add("hidden");
+    const sortContainer = document.getElementById('sort-card-container');
+    // sort append 
+     {
+        const sortCard = document.createElement('div');
+        const { breed, image, pet_name, gender, date_of_birth, price, petId } = sort;
+        sortCard.innerHTML = `
+            <div class="card bg-base-100 shadow-xl ">
+                        <figure class="px-10 pt-10">
+                          <img
+                            src="${image}"
+                           
+                            class="rounded-xl" />
+                        </figure>
+                        <div class="card-body ">
+                          <h2 class="card-title">${(pet_name === undefined ? ' not Available' : pet_name)}</h2>
+                          <p class="flex items-center gap-2">
+                            <span class="w-4 h-4"><img src="./images/Frame.png" alt="" class="w-full object-cover"></span>
+                            <span class="text-sm text-gray-500">Breed: ${(breed === undefined ? ' not Available' : breed)}</span>
+                        </p>
+                        <p class="flex items-center gap-2">
+                            <span><i class="fa-regular fa-calendar"></i></span>
+                            <span  class="text-sm text-gray-500">Birth: ${(date_of_birth === undefined ? ' not Available' : date_of_birth)}</span>
+                        </p>
+                        <p class="flex items-center gap-2">
+                            <span><i class="fa-solid fa-venus"></i></span>
+                            <span class="text-sm text-gray-500">Gender: ${(gender === undefined ? ' not Available' : gender)}</span>
+                        </p>
+                          <p class="flex items-center gap-2">
+                            <span><i class="fa-solid fa-dollar-sign"></i></span>
+                            <span class="text-sm text-gray-500">Price : ${(price === null ? ' not Available' : price)}$</span>
+                        </p>
+                        <div class="divider"></div>
+                         <div class="flex items-center justify-between gap-1 md:gap-2 ">
+                            <!-- btn  -->
+                            <div >
+                                <button id="btn-like" class="btn btn-outline   font-extrabold btn-sm " onclick="addLikeContainer('${image}')">
+                                  <span><i class="fa-regular fa-thumbs-up"></i></span></button>
+                            </div>
+                            <div>
+                                <button class="btn btn-outline  text-primary-color font-extrabold btn-sm" id="adopt-modal-btn${petId}" onclick="showAdoptModal(${petId})">Adopt </button>
+                            </div>
+                            <div>
+                                <button class="btn btn-outline  text-primary-color font-extrabold btn-sm"
+                                onclick="showPetDetails(${petId})" >Details </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+        `
+        sortContainer.append(sortCard);
+    }
+}
+const sort = () => {
+
+    console.log("sotring");
+
+    document.getElementById('pet-card-cotainer').classList.add('hidden')
+    document.getElementById('spiner').classList.remove('hidden')
+    document.getElementById('spiner').classList.add('flex')
+
+
+
+    setTimeout(async () => {
+        document.getElementById('pet-card-cotainer').classList.remove('hidden')
+        document.getElementById('spiner').classList.add('hidden')
+
+
+        try {
+
+            const res = await fetch('https://openapi.programming-hero.com/api/peddy/pets');
+            const data = await res.json();
+
+            if (data.status && Array.isArray(data.pets)) {
+
+                const sortedPets = data.pets.sort((a, b) => {
+
+                    const priceA = a.price || 0;
+                    const priceB = b.price || 0;
+                    return priceB - priceA;
+
+
+                });
+
+
+                sortPets(sortedPets);
+            } else {
+                console.error('No pets found or status is not successful.');
+            }
+
+        } catch (error) {
+            console.error('Error fetching the pets:', error);
+        }
+
+    }, 2000)
+
 };
 
 showCategories();
