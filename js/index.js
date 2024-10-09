@@ -3,14 +3,8 @@ const showCategories =() => {
     .then((res)=> res.json())
     .then((data)=> {
         displayCategories(data.categories);
-
-       
-       
-
     })
     .catch((error)=>console.log(error));
-
-  
 }
 
 // remove active
@@ -21,15 +15,6 @@ const removeActiveClass = () => {
     }
 
 }
-// all pets show 
-const allPets = async () => {
-    const res = await fetch('https://openapi.programming-hero.com/api/peddy/pets')
-    const data = await res.json()
-    showAllPet(data.pets);
-
-}
-
-
 const displayCategories = (data) => {
     //target div 
     const categoriesContainer = document.getElementById('categories-btn-container');
@@ -51,12 +36,21 @@ const displayCategories = (data) => {
     
 }
 
+// all pets show 
+const allPets = async () => {
+    const res = await fetch('https://openapi.programming-hero.com/api/peddy/pets')
+    const data = await res.json()
+    showAllPet(data.pets);
+
+}
+
+
+
 showAllPet = (pets) => {
     const petCardContainer = document.getElementById('pet-card-cotainer');
     pets.forEach(pet => {
         const petCard = document.createElement('div');
         const { breed, image, pet_name, gender, date_of_birth, price, petId } = pet;
-
         petCard.innerHTML = `
             <div class="card bg-base-100 shadow-xl ">
                         <figure class="px-10 pt-10">
@@ -91,7 +85,7 @@ showAllPet = (pets) => {
                                   <span><i class="fa-regular fa-thumbs-up"></i></span></button>
                             </div>
                             <div>
-                                <button class="btn btn-outline  text-primary-color font-extrabold btn-sm">Adopt </button>
+                                <button class="btn btn-outline  text-primary-color font-extrabold btn-sm" id="adopt-modal-btn${petId}" onclick="showAdoptModal(${petId})">Adopt </button>
                             </div>
                             <div>
                                 <button class="btn btn-outline  text-primary-color font-extrabold btn-sm"
@@ -146,7 +140,7 @@ const displayEachPet = (pet) => {
         pet.forEach(pet => {
             const petCard = document.createElement('div');
 
-            const { breed, image, pet_name, gender, date_of_birth, price, petId } = pet;
+            const { breed, image, pet_name, gender, date_of_birth, price, petId} = pet;
 
             petCard.innerHTML = `
                 <div class="card bg-base-100 shadow-xl ">
@@ -182,7 +176,8 @@ const displayEachPet = (pet) => {
                                       <span><i class="fa-regular fa-thumbs-up"></i></span></button>
                                 </div>
                                 <div>
-                                    <button class="btn btn-outline  text-primary-color font-extrabold btn-sm">Adopt </button>
+                                    <button class="btn btn-outline  text-primary-color font-extrabold btn-sm"
+                                    id="adopt-modal-btn${petId}" onclick="showAdoptModal(${petId})">Adopt </button>
                                 </div>
                                 <div>
                                     <button class="btn btn-outline  text-primary-color font-extrabold btn-sm"  onclick="showPetDetails(${petId})" >Details </button>
@@ -192,6 +187,7 @@ const displayEachPet = (pet) => {
                           </div>
             `
             petCardContainer.appendChild(petCard);
+
         });
     } else {
         const petCardContainer = document.getElementById('pet-card-cotainer');
@@ -294,5 +290,43 @@ const showPetModal = (Details) => {
     `
     DetailsModalContainer.appendChild(detailsModal);
 }
+
+const closeModal = (button) => {
+    const modal = document.getElementById('adopt-Modal');
+    modal.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+    document.getElementById(`adopt-modal-btn${button}`).innerHTML = 'Adopted';
+    document.getElementById(`adopt-modal-btn${button}`).classList.add('btn-disabled');
+    document.getElementById(`adopt-modal-btn${button}`).onclick = null;
+};
+const showAdoptModal = (button) => {
+    const modal = document.getElementById('adopt-Modal');
+    const timerDisplay = document.getElementById('timer');
+
+
+    modal.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+
+    let countdown = 3;
+    timerDisplay.textContent = countdown;
+
+
+    const interval = setInterval(() => {
+        countdown--;
+        timerDisplay.textContent = countdown;
+
+        if (countdown <= 0) {
+            clearInterval(interval);
+            closeModal(button);
+        }
+    }, 1000);
+
+
+    document.getElementById('closeModal').onclick = () => {
+        clearInterval(interval);
+        closeModal(button);
+    };
+};
+
 showCategories();
 allPets();

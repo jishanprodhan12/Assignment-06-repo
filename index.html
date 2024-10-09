@@ -38,11 +38,12 @@
         .lato {
             font-family: "Lato", sans-serif;
         }
-        .active{
+
+        .active {
             border: 2px solid teal;
             background-color: hsla(180, 91%, 36%, 0.342);
             width: fit-content;
-            border-radius: 50% ;
+            border-radius: 50%;
             padding-left: 0 30px;
             overflow: hidden;
         }
@@ -133,13 +134,32 @@
         </section>
         <!-- modal  -->
         <section>
-            <!-- Open the modal using ID.showModal() method -->
+            <!-- Open the details modal using ID.showModal() method -->
             <div id="details-modal-container">
 
             </div>
 
-            <!-- model end  -->
+            <!--details model end  -->
+  
+            <!--! adopt modal start  -->
+            <div id="adopt-Modal"
+            class="fixed z-10 inset-0 flex items-center justify-center bg-transparent hidden backdrop-blur-sm">
+            <div class="bg-white p-10 rounded-xl shadow-lg  ">
+
+                <div class="flex items-center justify-center flex-col space-y-4 ">
+                    <div class="h-20">
+                        <img class="h-full" src="./images/hand.gif" alt="">
+                    </div>
+                    <h2 class="text-5xl font-extrabold">Congrats</h2>
+                    <p class="text-xl">Adoption Process is Start For Your Pet</p>
+                    <p id="countdown" class="text-6xl font-extrabold mt-4"><span id="timer">3</span></p>
+                </div>
+
+            </div>
+        </div>
         </section>
+
+       
 
     </main>
 
